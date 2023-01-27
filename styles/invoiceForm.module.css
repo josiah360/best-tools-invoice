@@ -1,0 +1,51 @@
+.customerInfo, .date {
+    display: flex;
+    flex-direction: column;
+    row-gap: .3rem;
+}
+
+.customerInfo input,
+.date input {
+    padding: 1rem .5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(128, 128, 128);
+    margin-bottom: 1rem;
+}
+
+.customerInfo input:focus,
+.date input:focus {
+    outline: none;
+    border-color: tomato;
+}
+
+.customerInfo label,
+.date label {
+    padding: 0 .7rem;
+}
+
+.invoiceItems {
+    background-color: beige;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5px
+}
+
+.addItemButton {
+    background-color: palevioletred;
+    border: none; 
+    padding: .8rem 1.5rem;
+    color: white;
+    border-radius: 5px;
+}
+
+.addButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.addItemButton:active {
+    transform: scale(0.97);
+}
+

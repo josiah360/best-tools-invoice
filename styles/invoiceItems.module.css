@@ -1,0 +1,52 @@
+.invoiceItem {
+    display: flex;
+    column-gap: 1rem;
+}
+
+/* .invoiceItem > * {
+    flex: 1 1 auto;
+    
+} */
+
+.description,
+.quantity,
+.rate {
+    display: flex;
+    flex-direction: column;
+    row-gap: .3rem;
+}
+
+.description {
+    flex: 1
+}
+
+.quantity {
+    width: 20%;
+}
+
+.rate {
+    width: 20%;
+}
+
+.description input,
+.quantity input,
+.rate input {
+    padding: 1rem .5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(128, 128, 128);
+    margin-bottom: 1rem;
+}
+
+.description input:focus,
+.quantity input:focus,
+.rate input:focus {
+    outline: none;
+    border-color: tomato;
+}
+
+.description label,
+.quantity label,
+.rate label {
+    padding: 0 .7rem;
+}
+

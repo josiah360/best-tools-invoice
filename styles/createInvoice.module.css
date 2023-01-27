@@ -1,0 +1,13 @@
+
+.mainWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.formWrapper{
+    width: 1000px;
+    background-color: white;
+    padding: 3rem;
+}
