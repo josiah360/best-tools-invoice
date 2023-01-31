@@ -4,9 +4,11 @@ import Invoice from "@/models/invoice"
 
 async function addNewInvoice(req, res) {
 
+    const {recipientName, recipientAddress, createdAt, items, status} = req.body
+
     if(req.method === 'POST') {
         await mongoConnect()
-        const invoice = new Invoice(null, 'Mariam', '55 Kadara Street', '22-10-2022', ['A', 'B', 'C'])
+        const invoice = new Invoice(null, recipientName, recipientAddress, createdAt, items, status)
         try {
             await invoice.save()
             return res.status(200).json({ message: 'Invoice saved successfuly!' })

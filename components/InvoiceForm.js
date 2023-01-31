@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react'
+import { useRouter } from 'next/router'
 
 import styles from '../styles/invoiceForm.module.css'
 import InvoiceItems from './InvoiceItems'
 
 const InvoiceForm = () => {
+    const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
+
     const [invoiceItems, setInvoiceItems] = useState([{
         id: Math.random().toString(),
         description: '',
@@ -32,17 +36,32 @@ const InvoiceForm = () => {
         setInvoiceItems(newItems)
     }
 
-    const saveInvoice = (e) => {
+    const saveInvoice = async(e) => {
         e.preventDefault()
 
         const invoice = {
             recipientName: nameRef.current.value,
             recipientAddress: addressRef.current.value,
             createdAt: dateRef.current.value,
-            items: invoiceItems
+            items: invoiceItems,
+            status:'pending'
         }
 
-        console.log(invoice)
+        try{
+            setIsLoading(true)
+            await fetch('/api/add-new', {
+                method: 'POST',
+                body: JSON.stringify(invoice),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }) 
+
+            setIsLoading(false)
+            router.push('/')
+        } catch(err) {
+            console.log(err)
+        }
     }
 
   return (
@@ -92,7 +111,7 @@ const InvoiceForm = () => {
                     onClick={handleAddItem}>Add Item</button>
             </div>
         </div>
-        <button type='submit' className={styles.addItemButton}>save Invoice</button>
+        <button type='submit' className={styles.addItemButton}>{isLoading ? 'Saving Invoice...' : 'Save Invoice'}</button>
     </form>
   )
 }
