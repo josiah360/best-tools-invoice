@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
+
+import { Context } from "@/store/invoice-context";
 
 import InvoiceHeader from "@/components/invoice/InvoiceHeader";
 
@@ -7,6 +9,7 @@ import styles from '../../styles/Invoice.module.css'
 
 const Invoice = () => {
     const router = useRouter()
+    const invoiceCtx = useContext(Context)
 
     return (
         <div className= {styles.mainWrapper}>
@@ -17,12 +20,12 @@ const Invoice = () => {
                     <div className={styles.invoiceDetails}>
                         <div className={styles.customerInfo}>
                             <h4>INVOICE TO:</h4>
-                            <p>OLAJIDE AJIBOLA</p>
-                            <p>48, Kadara Street, Ebute Metta, Lagos</p>
+                            <p>{ invoiceCtx?.recipientName }</p>
+                            <p>{ invoiceCtx?.recipientAddress }</p>
                         </div>
                         <div className={styles.otherInfo}>
                             <p><span>Invoice No:</span> <span>01245</span></p>
-                            <p><span>Date:</span> <span>25/02/2023</span></p>
+                            <p><span>Date:</span> <span>{ invoiceCtx?.createdAt }</span></p>
                         </div>
                     </div>
 
@@ -35,27 +38,18 @@ const Invoice = () => {
                             <h4>TOTAL</h4>
                         </div>
                         <div className={styles.listWrapper}>
-                            <div className={styles.item}>
-                                <p>1</p>
-                                <p className={styles.description}>30 Pices of Nike Shoes</p>
-                                <p>3000</p>
-                                <p>2</p>
-                                <p>6000</p>
-                            </div>
-                            <div className={styles.item}>
-                                <p>1</p>
-                                <p className={styles.description}>30 Pices of Nike Shoes</p>
-                                <p>3000</p>
-                                <p>2</p>
-                                <p>6000</p>
-                            </div>
-                            <div className={styles.item}>
-                                <p>1</p>
-                                <p className={styles.description}>30 Pices of Nike Shoes</p>
-                                <p>3000</p>
-                                <p>2</p>
-                                <p>6000</p>
-                            </div>
+                            {invoiceCtx?.invoiceItems?.map((item, index) => {
+                                return (
+                                <div className={styles.item}>
+                                    <p>{index + 1}</p>
+                                    <p className={styles.description}>{item?.description}</p>
+                                    <p>{item?.rate}</p>
+                                    <p>{item?.quantity}</p>
+                                    <p>{item?.price}</p>
+                                </div>
+                               
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

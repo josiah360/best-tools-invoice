@@ -1,40 +1,19 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import { useRouter } from 'next/router'
+
+import { Context } from '@/store/invoice-context'
 
 import styles from '../styles/invoiceForm.module.css'
 import InvoiceItems from './InvoiceItems'
 
 const InvoiceForm = () => {
     const router = useRouter()
+    const invoiceContext = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
-
-    const [invoiceItems, setInvoiceItems] = useState([{
-        id: Math.random().toString(),
-        description: '',
-        quantity: 1,
-        rate: 0
-    }])
 
     const nameRef = useRef()
     const addressRef = useRef()
     const dateRef = useRef()
-
-    const handleAddItem = () => {
-        const newInvoiceItems = [...invoiceItems, {
-            id: Math.random().toString(),
-            description: '',
-            quantity: 1,
-            rate: 0
-        }]
-        setInvoiceItems(newInvoiceItems)
-    }
-
-    const editInvoiceItem = (editedItem) => {
-        const newItems = [...invoiceItems]
-        const itemIndex = newItems.findIndex(item => item.id === editedItem.id)
-        newItems[itemIndex] = editedItem
-        setInvoiceItems(newItems)
-    }
 
     const saveInvoice = async(e) => {
         e.preventDefault()
@@ -43,9 +22,9 @@ const InvoiceForm = () => {
             recipientName: nameRef.current.value,
             recipientAddress: addressRef.current.value,
             createdAt: dateRef.current.value,
-            items: invoiceItems,
+            items: invoiceContext.invoiceItems,
             status:'pending',
-            total: invoiceItems.reduce((total, item) => {
+            total: invoiceContext.invoiceItems.reduce((total, item) => {
                     return total + item.price
                 }, 0)
         }
@@ -59,9 +38,9 @@ const InvoiceForm = () => {
                     'Content-Type': 'application/json'
                 }
             }) 
-
+            invoiceContext.setInvoice(invoice)
             setIsLoading(false)
-            // router.push(`/invoice/${invoice}`)
+            router.push(`/invoice/1`)
         } catch(err) {
             console.log(err)
         }
@@ -95,7 +74,7 @@ const InvoiceForm = () => {
         </div>
         <div className={styles.invoiceItems}>
             <div>
-                {invoiceItems.map((item, index) => 
+                {invoiceContext.invoiceItems.map((item, index) => 
                     <InvoiceItems 
                         key={item.id}
                         id={item.id}
@@ -103,7 +82,7 @@ const InvoiceForm = () => {
                         description={item.description}
                         quantity={item.quantity}
                         rate={item.rate}
-                        onEditItem={editInvoiceItem}
+                        onEditItem={invoiceContext.editInvoiceItem}
                     />
                 )}
             </div>
@@ -112,7 +91,7 @@ const InvoiceForm = () => {
                 <button 
                     type='button' 
                     className={styles.addItemButton}
-                    onClick={handleAddItem}>Add Item</button>
+                    onClick={invoiceContext.handleAddItem}>Add Item</button>
             </div>
         </div>
         <div className={styles.saveButtonWrapper}>
