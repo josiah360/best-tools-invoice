@@ -5,13 +5,14 @@ import { getDb } from "@/util/database";
 // const ObjectId = new mongodb.ObjectId
 
 class Invoice {
-    constructor(id, recipientName, recipientAddress, createdAt, items, status) {
+    constructor(id, recipientName, recipientAddress, createdAt, items, status, total) {
         this._id = id ? ObjectId(id) : null
         this.recipientName = recipientName
         this.recipientAddress = recipientAddress
         this.createdAt = createdAt
         this.items = items
         this.status = status
+        this.total = total
     }
 
     async save() {

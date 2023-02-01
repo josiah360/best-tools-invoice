@@ -44,7 +44,10 @@ const InvoiceForm = () => {
             recipientAddress: addressRef.current.value,
             createdAt: dateRef.current.value,
             items: invoiceItems,
-            status:'pending'
+            status:'pending',
+            total: invoiceItems.reduce((total, item) => {
+                    return total + item.price
+                }, 0)
         }
 
         try{
@@ -58,7 +61,7 @@ const InvoiceForm = () => {
             }) 
 
             setIsLoading(false)
-            router.push('/')
+            // router.push(`/invoice/${invoice}`)
         } catch(err) {
             console.log(err)
         }
@@ -67,7 +70,7 @@ const InvoiceForm = () => {
   return (
     <form onSubmit={saveInvoice}>
         <div className={styles.customerInfo}>
-            <label>Bill to</label>
+            <label>Recipient Name</label>
             <input 
                 ref={nameRef}
                 type='text' 
@@ -76,7 +79,7 @@ const InvoiceForm = () => {
         </div>
         {/* {console.log(invoiceItems)} */}
         <div className={styles.customerInfo}>
-            <label>Ship to</label>
+            <label>Recipient Address</label>
             <input 
                 ref={addressRef}
                 type='text' 
@@ -88,11 +91,11 @@ const InvoiceForm = () => {
             <input 
                 ref={dateRef}
                 type='date'
-                placeholder='Which address is this invoice to? (optional)'
             />
         </div>
         <div className={styles.invoiceItems}>
-            {invoiceItems.map((item, index) => 
+            <div>
+                {invoiceItems.map((item, index) => 
                     <InvoiceItems 
                         key={item.id}
                         id={item.id}
@@ -103,6 +106,7 @@ const InvoiceForm = () => {
                         onEditItem={editInvoiceItem}
                     />
                 )}
+            </div>
             
             <div className={styles.addButtonWrapper}>
                 <button 
@@ -111,7 +115,10 @@ const InvoiceForm = () => {
                     onClick={handleAddItem}>Add Item</button>
             </div>
         </div>
-        <button type='submit' className={styles.addItemButton}>{isLoading ? 'Saving Invoice...' : 'Save Invoice'}</button>
+        <div className={styles.saveButtonWrapper}>
+          <button type='submit' className={styles.saveItemButton}>{isLoading ? 'Saving Invoice...' : 'Save Invoice'}</button>
+        </div>
+        
     </form>
   )
 }

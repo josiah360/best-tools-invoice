@@ -1,6 +1,11 @@
 .invoiceItem {
     display: flex;
     column-gap: 1rem;
+    padding: 1em 0;
+}
+
+.invoiceItem:not(:last-of-type) {
+    border-bottom: 1px grey dashed;
 }
 
 /* .invoiceItem > * {
@@ -10,27 +15,30 @@
 
 .description,
 .quantity,
-.rate {
+.price {
     display: flex;
     flex-direction: column;
     row-gap: .3rem;
 }
 
 .description {
-    flex: 1
+    flex: 1 
 }
 
-.quantity {
-    width: 20%;
+.quantity,
+.price,
+.total {
+    width: 15%;
 }
 
-.rate {
-    width: 20%;
+.total p{
+   margin-top: 1rem
 }
+
 
 .description input,
 .quantity input,
-.rate input {
+.price input {
     padding: 1rem .5rem;
     border-radius: 5px;
     border: 1px solid rgb(128, 128, 128);
@@ -39,14 +47,14 @@
 
 .description input:focus,
 .quantity input:focus,
-.rate input:focus {
+.price input:focus {
     outline: none;
     border-color: tomato;
 }
 
 .description label,
 .quantity label,
-.rate label {
+.price label {
     padding: 0 .7rem;
 }
 

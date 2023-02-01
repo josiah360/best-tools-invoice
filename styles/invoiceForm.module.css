@@ -30,19 +30,39 @@
     border-radius: 5px
 }
 
+.addButtonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
 .addItemButton {
     background-color: palevioletred;
     border: none; 
     padding: .8rem 1.5rem;
     color: white;
     border-radius: 5px;
+    
 }
 
-.addButtonWrapper {
+.saveButtonWrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin: 0;
     padding: 0;
+    margin-top: 1rem;
+}
+
+.saveItemButton {
+    background-color: rgb(72, 170, 72);
+    border: none; 
+    padding: .8rem 1.5rem;
+    color: white;
+    border-radius: 5px;
+    width: 15rem;
+    font-weight: 500;
+    
 }
 
 .addItemButton:active {
