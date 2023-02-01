@@ -1,0 +1,17 @@
+.headerWrapper h1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.textWrapper span{
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.headerWrapper {
+    background-color: tomato;
+    padding: 2rem 3rem;
+}
