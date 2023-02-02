@@ -5,14 +5,14 @@
 :root {
     --primary-color: #7c5dfa;
     --secondary-color: #1e2139;
-    --body-bg: #141625;
+    --body-bg: rgb(229, 240, 255);;
     --paid-status-bg: #32cf9b;
     --pending-status-bg: rgba(255, 143, 0, 0.06);
     --small-text-color: #888eb0;
     --draft-bg: #252945;
 }
 
-
+/* #141625 */
 
 * {
     padding: 0;

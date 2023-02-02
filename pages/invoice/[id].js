@@ -7,6 +7,16 @@ import InvoiceHeader from "@/components/invoice/InvoiceHeader";
 
 import styles from '../../styles/Invoice.module.css'
 
+export const getStaticProps = async (context) => {
+    const response = await fetch(`http://localhost:3000//api/${context.params.invoiceId}`)
+    const { invoice } = await response.json()
+  
+    return {
+      props: invoice || { },
+      revalidate: 10,
+    }
+}
+
 const Invoice = () => {
     const router = useRouter()
     const invoiceCtx = useContext(Context)
@@ -20,12 +30,12 @@ const Invoice = () => {
                     <div className={styles.invoiceDetails}>
                         <div className={styles.customerInfo}>
                             <h4>INVOICE TO:</h4>
-                            <p>{ invoiceCtx?.recipientName }</p>
-                            <p>{ invoiceCtx?.recipientAddress }</p>
+                            <p>{ invoiceCtx?.invoice?.recipientName }</p>
+                            <p>{ invoiceCtx?.invoice?.recipientAddress }</p>
                         </div>
                         <div className={styles.otherInfo}>
                             <p><span>Invoice No:</span> <span>01245</span></p>
-                            <p><span>Date:</span> <span>{ invoiceCtx?.createdAt }</span></p>
+                            <p><span>Date:</span> <span>{ invoiceCtx?.invoice?.createdAt }</span></p>
                         </div>
                     </div>
 
@@ -38,7 +48,7 @@ const Invoice = () => {
                             <h4>TOTAL</h4>
                         </div>
                         <div className={styles.listWrapper}>
-                            {invoiceCtx?.invoiceItems?.map((item, index) => {
+                            {invoiceCtx?.invoice?.items?.map((item, index) => {
                                 return (
                                 <div className={styles.item}>
                                     <p>{index + 1}</p>
@@ -63,9 +73,9 @@ const Invoice = () => {
                     </div>
 
                     <div className={styles.amount}>
-                        <p><span>SUB TOTAL:</span><span>₦2000</span></p>
+                        <p><span>SUB TOTAL:</span><span>{ invoiceCtx?.invoice?.total }</span></p>
                         <p><span>TAX:</span> <span>0.00%</span></p>
-                        <p className={styles.total}><span>TOTAL</span> <span>₦2180058864</span></p>
+                        <p className={styles.total}><span>TOTAL</span> <span>₦{ invoiceCtx?.invoice?.total }</span></p>
                     </div>
                 </div>
             </div>

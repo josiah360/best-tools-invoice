@@ -36,7 +36,7 @@ class Invoice {
 
     static async getById(id) {
         const db = getDb()
-        return db.collection('invoices').find({ _id: ObjectId(id)}).next()
+        return db.collection('invoices').findOne({ _id: ObjectId(id)})
     }
 
     static async fetchAll() {

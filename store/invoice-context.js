@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 export const Context = React.createContext({
     invoiceItems: [],
+    invoice: {},
     handleAddItem: () => {},
     editInvoiceItem: (item) => {},
     setInvoice: (item) => {}
@@ -42,6 +43,7 @@ export const Provider = (props) => {
     return (
         <Context.Provider value = {{
             invoiceItems,
+            invoice,
             handleAddItem,
             editInvoiceItem,
             setInvoice
