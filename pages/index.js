@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export const getStaticProps = async () => {
-  const response = await fetch('http://localhost:3000//api/invoices')
+  const response = await fetch('http://localhost:3000/api/invoices')
   const invoices = await response.json()
 
   return {
