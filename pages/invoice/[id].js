@@ -5,6 +5,8 @@ import { Context } from "@/store/invoice-context";
 
 import InvoiceHeader from "@/components/invoice/InvoiceHeader";
 
+import Header from "@/components/Header/Header";
+
 import styles from '../../styles/Invoice.module.css'
 
 import { isEmpty } from "@/util/helpers";
@@ -30,6 +32,7 @@ const InvoiceDetails = (props) => {
 
     return (
         <div className= {styles.mainWrapper}>
+            <Header invoiceDetails />
             <div className={styles.invoiceWrapper}>
                 <InvoiceHeader />
 

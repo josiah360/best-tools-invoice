@@ -12,6 +12,16 @@
 }
 
 .headerWrapper {
-    background-color: tomato;
+    background-color: rgb(68, 116, 170);
     padding: 2rem 3rem;
 }
+
+@media only screen and (max-width: 500px) {
+
+    body {
+    
+    background-color: lightblue;
+    
+    }
+    
+    }

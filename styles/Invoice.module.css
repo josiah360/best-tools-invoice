@@ -1,16 +1,20 @@
 .mainWrapper {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     height: 100vh;
 }
+
 
 .invoiceWrapper{
     display: flex;
     flex-direction: column;
     width: 1000px;
     background-color: rgb(241, 241, 241);
-    height: 100%;
+    min-height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .invoiceBody {
@@ -33,7 +37,7 @@
 }
 
 .listHeader {
-    background-color: tomato;
+    background-color: rgb(68, 116, 170);
     color: white;
 }
 
@@ -92,6 +96,6 @@
 }
 
 .total {
-    background-color: rgb(255, 208, 199);
+    background-color: rgb(199, 223, 255);
     padding: .5rem;
 }
