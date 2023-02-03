@@ -28,8 +28,6 @@ const InvoiceDetails = (props) => {
         }
     }, [])
 
-    console.log(invoiceItem)
-
     return (
         <div className= {styles.mainWrapper}>
             <Header invoiceDetails />
@@ -64,7 +62,7 @@ const InvoiceDetails = (props) => {
                                     <p>{index + 1}</p>
                                     <p className={styles.description}>{item?.description}</p>
                                     <p>{item?.rate}</p>
-                                    <p>{item?.quantity}</p>
+                                    <p className={styles.itemQuantity}>{item?.quantity}</p>
                                     <p>{item?.price}</p>
                                 </div>
                                

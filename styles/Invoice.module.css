@@ -99,3 +99,108 @@
     background-color: rgb(199, 223, 255);
     padding: .5rem;
 }
+
+/* ------------ MEDIA QUERIES ------------------ */
+
+@media only screen and (max-width: 912px) {
+    .invoiceWrapper{
+        width: 90%;
+        border-radius: 10px;
+    }
+
+    .bankInfo {
+        width: 40%;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+  
+}
+
+@media only screen and (max-width: 540px) {
+    .invoiceWrapper{
+        width: 100%;
+        padding: 0;
+        /* background-color: white; */
+    }
+
+    .invoiceDetails {
+        padding: 1rem;
+    }
+
+    .invoiceBody {
+        padding: 0;
+    }
+
+    .bankInfo {
+        width: 40%;
+    }
+
+    .customerInfo {
+        width: 50%;
+    }
+
+    .customerInfo p {
+        font-size: 0.75rem;
+    }
+
+    .customerInfo h4 {
+        font-size: 0.75rem;
+    }
+
+    .otherInfo p {
+        font-size: 0.75rem;
+    }
+
+    .listHeader {
+        font-size: .72rem;
+    }
+
+    .item p {
+        font-size: .7rem;
+    }
+
+    .itemQuantity {
+        text-align: center;
+    }
+
+    .footerInfo {
+        padding: 1rem;
+    }
+
+    .bankInfo {
+        width: 45%;
+        padding: 0.5rem
+    }
+
+    .bankInfo p {
+        font-size: .7rem;
+    }
+
+    .bankInfo h4 {
+        font-size: .6rem;
+    }
+
+    .amount {
+        width: 45%;
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 393px) {
+
+
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
+}
