@@ -8,40 +8,61 @@
 }
 
 .headerText {
-    text-align: left;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 .formWrapper{
     width: 1000px;
     background-color: white;
     padding: 3rem;
+    border-radius: 10px;
 }
 
 /* -------------MEDIA QUERIES ------------ */
 
 @media only screen and (max-width: 912px) {
-
+    .formWrapper{
+        width: 90%;
+        background-color: white;
+        padding: 3rem;
+        border-radius: 20px;
+    }
   
 
 }
 
 
 @media only screen and (max-width: 768px) {
+    .headerText {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
     .formWrapper{
-        width: 100%;
+        width: 90%;
         background-color: white;
-        padding: .5rem;
+        padding: 3rem;
+        border-radius: 20px;
     }
 }
 
 @media only screen and (max-width: 540px) {
+    .headerText {
+        margin-bottom: 1rem;
+    }
 
+    .formWrapper{
+        width: 95%;
+        border-radius: 10px;
+    }
 
 }
 
 @media only screen and (max-width: 414px) {
     .formWrapper{
-        width: 100%;
+        /* width: 100%; */
         background-color: white;
         padding: .5rem;
     }
@@ -60,7 +81,7 @@
     
 
     .formWrapper{
-        width: 100%;
+        /* width: 100%; */
         background-color: white;
         padding: .5rem;
     }

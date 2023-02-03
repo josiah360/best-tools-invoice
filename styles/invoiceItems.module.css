@@ -2,6 +2,7 @@
     display: flex;
     column-gap: 1rem;
     padding: 1em 0;
+    overflow-x: hidden;
 }
 
 .invoiceItem:not(:last-of-type) {
@@ -12,6 +13,16 @@
     flex: 1 1 auto;
     
 } */
+
+.miniThings {
+    display: flex;
+    column-gap: .5rem;
+    width: 40%;
+}
+
+.miniThings > * {
+    flex: 1
+}
 
 .description,
 .quantity,
@@ -55,7 +66,7 @@
 .description label,
 .quantity label,
 .price label {
-    padding: 0 .7rem;
+    padding: 0;
 }
 
 
@@ -63,12 +74,33 @@
 
 @media only screen and (max-width: 912px) {
 
-  
+    .miniThings {
+        display: flex;
+        column-gap: .5rem;
+    }
 
 }
 
 
 @media only screen and (max-width: 768px) {
+    .invoiceItem {
+        display: flex;
+        column-gap: .5rem;
+        padding: .5rem;
+    }
+
+    .miniThings {
+        display: flex;
+        column-gap: .5rem;
+    }
+
+    .description label,
+    .quantity label,
+    .price label,
+    .total label {
+        padding: 0;
+        font-size: .9rem;
+    }
 
 }
 
