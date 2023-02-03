@@ -10,7 +10,7 @@ const index = () => {
     <div className= {styles.mainWrapper}>
       <Header makeInvoice />
       <div className={styles.formWrapper}>
-        <h1>INVOICE</h1>
+        <h1 className={styles.headerText}>INVOICE</h1>
         <InvoiceForm />
       </div>
     </div>

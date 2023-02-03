@@ -37,29 +37,31 @@ const InvoiceItems = (props) => {
             />
         </div>
 
-        <div className={`${styles.quantity} ${styles.wrapper}`}>
-            <label>Quantity</label>
-            <input 
-                ref={quantityRef}
-                type='number' 
-                defaultValue={1}
-                onChange={handleItemChange}
-            />
-        </div>
-
-        <div className={`${styles.price} ${styles.wrapper}`}>
-            <label>Price</label>
+        <div className={styles.miniThings}>
+            <div className={`${styles.quantity} ${styles.wrapper}`}>
+                <label>Quantity</label>
                 <input 
-                    ref={rateRef}
+                    ref={quantityRef}
                     type='number' 
-                    defaultValue={0}
+                    defaultValue={1}
                     onChange={handleItemChange}
                 />
-        </div>
-        s
-        <div className={`${styles.total} ${styles.wrapper}`}>
-            <label>Total</label>
-            <p>₦ {price?.toString()}</p>
+            </div>
+
+            <div className={`${styles.price} ${styles.wrapper}`}>
+                <label>Price</label>
+                    <input 
+                        ref={rateRef}
+                        type='number' 
+                        defaultValue={0}
+                        onChange={handleItemChange}
+                    />
+            </div>
+            
+            <div className={`${styles.total} ${styles.wrapper}`}>
+                <label>Total</label>
+                <p>₦ {price?.toString()}</p>
+            </div>
         </div>
     </div>
     

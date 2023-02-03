@@ -58,3 +58,172 @@
     padding: 0 .7rem;
 }
 
+
+/* -------------MEDIA QUERIES ------------ */
+
+@media only screen and (max-width: 912px) {
+
+  
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 540px) {
+    .invoiceItem {
+        display: flex;
+        flex-direction: column;
+        column-gap: .6rem;
+        padding: .5rem;
+    }
+
+    .description {
+        flex: 0;
+        width: 100%
+    }
+
+    .miniThings {
+        display: flex;
+        column-gap: .3rem;
+    }
+    
+    .quantity,
+    .price,
+    .total {
+        flex: 1;
+    }
+    
+    .total p{
+       margin-top: 1rem
+    }
+
+    .description label,
+    .quantity label,
+    .price label,
+    .total label {
+        padding: 0;
+        font-size: .9rem;
+    }
+
+}
+
+@media only screen and (max-width: 414px) {
+    .invoiceItem {
+        display: flex;
+        flex-direction: column;
+        column-gap: .6rem;
+        padding: .5rem;
+    }
+
+    .description {
+        flex: 0;
+        width: 100%
+    }
+
+    .miniThings {
+        display: flex;
+        column-gap: .3rem;
+    }
+    
+    .quantity,
+    .price,
+    .total {
+        flex: 1;
+    }
+    
+    .total p{
+       margin-top: 1rem
+    }
+
+    .description label,
+    .quantity label,
+    .price label,
+    .total label {
+        padding: 0;
+        font-size: .9rem;
+    }
+}
+
+
+@media only screen and (max-width: 393px) {
+    .invoiceItem {
+        display: flex;
+        flex-direction: column;
+        column-gap: .6rem;
+        padding: .5rem;
+    }
+
+    .description {
+        flex: 0;
+        width: 100%
+    }
+
+    .miniThings {
+        display: flex;
+        column-gap: .3rem;
+    }
+    
+    .quantity,
+    .price,
+    .total {
+        flex: 1;
+    }
+    
+    .total p{
+       margin-top: 1rem
+    }
+
+    .description label,
+    .quantity label,
+    .price label,
+    .total label {
+        padding: 0;
+        font-size: .9rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .invoiceItem {
+        display: flex;
+        flex-direction: column;
+        column-gap: .6rem;
+        padding: .5rem;
+    }
+
+    .description {
+        flex: 0;
+        width: 100%
+    }
+
+    .miniThings {
+        display: flex;
+        column-gap: .3rem;
+    }
+    
+    .quantity,
+    .price,
+    .total {
+        flex: 1;
+    }
+    
+    .total p{
+       margin-top: 1rem
+    }
+
+    .description label,
+    .quantity label,
+    .price label,
+    .total label {
+        padding: 0;
+        font-size: .9rem;
+    }
+
+}
+
+@media only screen and (max-width: 320px) {
+
+
+}

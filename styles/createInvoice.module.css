@@ -7,8 +7,67 @@
     height: 100vh;
 }
 
+.headerText {
+    text-align: left;
+}
+
 .formWrapper{
     width: 1000px;
     background-color: white;
     padding: 3rem;
+}
+
+/* -------------MEDIA QUERIES ------------ */
+
+@media only screen and (max-width: 912px) {
+
+  
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    .formWrapper{
+        width: 100%;
+        background-color: white;
+        padding: .5rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+
+
+}
+
+@media only screen and (max-width: 414px) {
+    .formWrapper{
+        width: 100%;
+        background-color: white;
+        padding: .5rem;
+    }
+}
+
+
+@media only screen and (max-width: 393px) {
+
+}
+
+@media only screen and (max-width: 375px) {
+    .headerText {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+
+    .formWrapper{
+        width: 100%;
+        background-color: white;
+        padding: .5rem;
+    }
+
+}
+
+@media only screen and (max-width: 320px) {
+
+
 }
