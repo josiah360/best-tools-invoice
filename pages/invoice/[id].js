@@ -28,9 +28,11 @@ const InvoiceDetails = (props) => {
         }
     }, [])
 
+    console.log(invoiceItem)
+
     return (
         <div className= {styles.mainWrapper}>
-            <Header invoiceDetails />
+            <Header invoiceDetails invoice={invoiceItem} />
             <div className={styles.invoiceWrapper}>
                 <InvoiceHeader />
 
@@ -61,9 +63,9 @@ const InvoiceDetails = (props) => {
                                 <div className={styles.item}>
                                     <p>{index + 1}</p>
                                     <p className={styles.description}>{item?.description}</p>
-                                    <p>{item?.rate}</p>
+                                    <p>{parseFloat(item?.rate).toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
                                     <p className={styles.itemQuantity}>{item?.quantity}</p>
-                                    <p>{item?.price}</p>
+                                    <p>{item?.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
                                 </div>
                                
                                 )
@@ -81,9 +83,9 @@ const InvoiceDetails = (props) => {
                     </div>
 
                     <div className={styles.amount}>
-                        <p><span>SUB TOTAL:</span><span>{ invoiceItem?.total }</span></p>
+                        <p><span>SUB TOTAL:</span><span>{ invoiceItem?.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
                         <p><span>TAX:</span> <span>0.00%</span></p>
-                        <p className={styles.total}><span>TOTAL</span> <span>₦{ invoiceItem?.total }</span></p>
+                        <p className={styles.total}><span>TOTAL</span> <span>{ invoiceItem?.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
                     </div>
                 </div>
             </div>

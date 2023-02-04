@@ -44,7 +44,7 @@ export default function Home(props) {
             </div>
             <div className={styles.right}>
               <p>{invoice.status}</p>
-              <h3>{invoice.total}</h3>
+              <h3>{invoice.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</h3>
             </div>
           </div>
         </Link>
