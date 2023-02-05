@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router'
 
+import mongoConnect from "@/util/database"
+import Invoice from "@/models/invoice"
+
 import Link from 'next/link'
 
 import styles from '../styles/Home.module.css'
@@ -9,6 +12,10 @@ import Header from '@/components/Header/Header'
 export const getStaticProps = async () => {
   const response = await fetch('http://localhost:3000/api/invoices')
   const invoices = await response.json()
+  // await mongoConnect()
+  // const invoices = await Invoice.fetchAll()
+
+  // console.log('static', invoices)
 
   return {
     props: invoices || [],
@@ -43,8 +50,8 @@ export default function Home(props) {
               <h3>{invoice.recipientName}</h3>
             </div>
             <div className={styles.right}>
-              <p>{invoice.status}</p>
-              <h3>{invoice.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</h3>
+              <p>{invoice?.status}</p>
+              <h3>{invoice?.total?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</h3>
             </div>
           </div>
         </Link>

@@ -25,12 +25,12 @@ class Invoice {
         return db.collection('invoices').deleteOne({ _id: ObjectId(id)})
     }
 
-    updateInvoice() {
+    async updateInvoice() {
         const db = getDb()
         return db.collection('invoices').updateOne({ _id: ObjectId(id)}, { $set: this })
     }
 
-    updateInvoiceStatus() {
+    async updateInvoiceStatus() {
 
     }
 

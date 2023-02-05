@@ -63,9 +63,9 @@ const InvoiceDetails = (props) => {
                                 <div className={styles.item}>
                                     <p>{index + 1}</p>
                                     <p className={styles.description}>{item?.description}</p>
-                                    <p>{parseFloat(item?.rate).toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
+                                    <p>{parseFloat(item?.rate)?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
                                     <p className={styles.itemQuantity}>{item?.quantity}</p>
-                                    <p>{item?.price.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
+                                    <p>{item?.price?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
                                 </div>
                                
                                 )
@@ -83,9 +83,9 @@ const InvoiceDetails = (props) => {
                     </div>
 
                     <div className={styles.amount}>
-                        <p><span>SUB TOTAL:</span><span>{ invoiceItem?.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
+                        <p><span>SUB TOTAL:</span><span>{ invoiceItem?.total?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
                         <p><span>TAX:</span> <span>0.00%</span></p>
-                        <p className={styles.total}><span>TOTAL</span> <span>{ invoiceItem?.total.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
+                        <p className={styles.total}><span>TOTAL</span> <span>{ invoiceItem?.total?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' }) }</span></p>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ export const getStaticProps = async (context) => {
       props: {
         invoice: invoice.invoice || { }
       },
-      revalidate: 10,
+    //   revalidate: 10,
     }
 }
 
@@ -118,8 +118,6 @@ export async function getStaticPaths() {
     const paths = result.invoices.map((invoice) => ({
       params: { id: invoice._id },
     })) 
-
-    console.log(paths)
 
     paths.push({
         params: { id: '1' },

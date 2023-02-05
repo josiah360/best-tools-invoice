@@ -5,7 +5,6 @@ import Invoice from "@/models/invoice"
 const getInvoice = async (req, res) => {
     await mongoConnect()
     const invoiceId = req.query.invoiceId
-    console.log({invoiceId})
 
     try {
         const invoice = await Invoice.getById(invoiceId)

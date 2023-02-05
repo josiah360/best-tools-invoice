@@ -36,13 +36,27 @@ const Header = (props) => {
         setIsLoading(false)
     }
 
+    const handleDeleteInvoice = async() => {
+        const response = await fetch('/api/delete-invoice', {
+            method: 'POST',
+            body: JSON.stringify(props.invoice.id),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = response.json()
+        backToHome()
+        
+    }
+ 
  return (
     <header className={styles.header}>
         {home && <button onClick={createInvoice}>Create Invoice</button>}
         {invoiceDetails && <button onClick={backToHome}>Back</button> || 
          makeInvoice && <button onClick={backToHome}>Back</button>}
         {invoiceDetails && <button onClick={handleDownloadPDF}>{isLoading ? 'Downloading...' : 'Download Invoice'}</button>}
-        {invoiceDetails && <button>Delete Invoice</button>}
+        {invoiceDetails && <button onClick={handleDeleteInvoice}>Delete Invoice</button>}
     </header>
  )
 }

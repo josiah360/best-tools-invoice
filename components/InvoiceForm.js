@@ -56,7 +56,7 @@ const InvoiceForm = () => {
                 placeholder='Who is this invoice to? (required)'
             />
         </div>
-        {/* {console.log(invoiceItems)} */}
+   
         <div className={styles.customerInfo}>
             <label>Recipient Address</label>
             <input 

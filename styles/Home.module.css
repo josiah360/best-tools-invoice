@@ -56,6 +56,10 @@
   padding: 5rem;
 }
 
+.emptyPage h2 {
+  text-align: center;
+}
+
 .emptyPage button{
   width: 20rem;
   padding: 1.5rem;
@@ -146,7 +150,20 @@
   .left p {
     font-size: .9rem;
    }
+
+   .emptyPage {
+    padding: 2rem
+  }
   
+   .emptyPage h2 {
+    font-size: 1rem;
+  }
+
+  .emptyPage button{
+    width: 15rem;
+    padding: 1rem;
+    
+  }
   
 }
 
