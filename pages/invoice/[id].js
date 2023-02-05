@@ -9,7 +9,7 @@ import Header from "@/components/Header/Header";
 
 import styles from '../../styles/Invoice.module.css'
 
-import { isEmpty } from "@/util/helpers";
+import { isEmpty, getInvoice } from "@/util/helpers";
 
 const InvoiceDetails = (props) => {
     const router = useRouter()
@@ -100,12 +100,15 @@ export default InvoiceDetails
 
 export const getStaticProps = async (context) => {
     const invoiceId = context.params.id
-    const response = await fetch(`http://localhost:3000/api/invoice/${invoiceId}`)
-    const invoice = await response.json()
+    // const response = await fetch(`http://localhost:3000/api/invoice/${invoiceId}`)
+    // const invoice = await response.json()
+
+    const response = await getInvoice(invoiceId)
+    const invoice = JSON.parse(JSON.stringify(response))
   
     return {
       props: {
-        invoice: invoice.invoice || { }
+        invoice: invoice || { }
       },
     //   revalidate: 10,
     }

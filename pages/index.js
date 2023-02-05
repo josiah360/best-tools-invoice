@@ -1,24 +1,26 @@
 import { useRouter } from 'next/router'
 
-import mongoConnect from "@/util/database"
-import Invoice from "@/models/invoice"
-
 import Link from 'next/link'
+
+import { getAllInvoices } from '@/util/helpers'
 
 import styles from '../styles/Home.module.css'
 
 import Header from '@/components/Header/Header'
 
 export const getStaticProps = async () => {
-  const response = await fetch('http://localhost:3000/api/invoices')
-  const invoices = await response.json()
-  // await mongoConnect()
-  // const invoices = await Invoice.fetchAll()
+  // const response = await fetch('http://localhost:3000/api/invoices')
+  // const invoices = await response.json()
 
-  // console.log('static', invoices)
+  const response = await getAllInvoices()
+  const invoices = JSON.parse(JSON.stringify(response))
+
+  console.log(invoices)
 
   return {
-    props: invoices || [],
+    props: {
+      invoices: invoices || [] 
+    },
     revalidate: 10,
   }
 }
