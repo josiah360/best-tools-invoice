@@ -10,7 +10,7 @@ let db;
 
 async function mongoConnect() {
     await client.connect()
-    console.log('database connected!')
+    // console.log('database connected!')
     db = client.db(name)
     return
 }

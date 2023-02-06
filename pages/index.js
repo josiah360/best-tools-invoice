@@ -10,9 +10,7 @@ import Header from '@/components/Header/Header'
 
 import HomePageInvoice from '@/components/invoice/homePageInvoice'
 
-export const getStaticProps = async () => {
-  // const response = await fetch('http://localhost:3000/api/invoices')
-  // const invoices = await response.json()
+export const getServerSideProps = async () => {
 
   const response = await getAllInvoices()
   const invoices = JSON.parse(JSON.stringify(response))
@@ -20,8 +18,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       propsInvoices: invoices || [] 
-    },
-    revalidate: 10
+    }
+    // revalidate: 10
   }
 }
 
