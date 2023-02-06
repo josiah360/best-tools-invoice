@@ -38,9 +38,9 @@ const InvoiceForm = () => {
                     'Content-Type': 'application/json'
                 }
             }) 
-            invoiceContext.setInvoice(invoice)
+            // invoiceContext.setInvoice(invoice)
             setIsLoading(false)
-            router.push(`/invoice/1`)
+            router.push('/')
         } catch(err) {
             console.log(err)
         }

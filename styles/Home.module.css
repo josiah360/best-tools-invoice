@@ -47,6 +47,11 @@
   cursor: pointer;
 }
 
+.status {
+  display: flex;
+  justify-content: flex-end !important;
+ }
+
 .emptyPage {
   display: flex;
   flex-direction: column;

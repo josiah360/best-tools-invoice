@@ -1,4 +1,4 @@
-import mongodb, { ObjectId } from 'mongodb'
+import { ObjectId } from 'mongodb'
 
 import { getDb } from "@/util/database";
 
@@ -34,6 +34,12 @@ class Invoice {
 
     }
 
+    static async searchInvoiceByName(name) {
+        const db = getDb()
+        const regex = new RegExp(name, 'i')
+        return db.collection('invoices').find({ recipientName: regex}).toArray()
+    }
+
     static async getById(id) {
         const db = getDb()
         return db.collection('invoices').findOne({ _id: ObjectId(id)})
@@ -41,7 +47,7 @@ class Invoice {
 
     static async fetchAll() {
         const db = getDb()
-        return db.collection('invoices').find().toArray()
+        return db.collection('invoices').find().limit(15).toArray()
     }
 }
 

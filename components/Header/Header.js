@@ -37,9 +37,10 @@ const Header = (props) => {
     }
 
     const handleDeleteInvoice = async() => {
+  
         const response = await fetch('/api/delete-invoice', {
             method: 'POST',
-            body: JSON.stringify(props.invoice.id),
+            body: JSON.stringify(props.invoice._id),
             headers: {
                 'Content-Type': 'application/json'
             }

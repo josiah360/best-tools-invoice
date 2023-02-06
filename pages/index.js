@@ -1,12 +1,14 @@
+import { useRef, useState } from 'react'
+
 import { useRouter } from 'next/router'
 
-import Link from 'next/link'
-
-import { getAllInvoices } from '@/util/helpers'
+import getAllInvoices from '@/util/getAllInvoices'
 
 import styles from '../styles/Home.module.css'
 
 import Header from '@/components/Header/Header'
+
+import HomePageInvoice from '@/components/invoice/homePageInvoice'
 
 export const getStaticProps = async () => {
   // const response = await fetch('http://localhost:3000/api/invoices')
@@ -15,19 +17,23 @@ export const getStaticProps = async () => {
   const response = await getAllInvoices()
   const invoices = JSON.parse(JSON.stringify(response))
 
-  console.log(invoices)
-
   return {
     props: {
-      invoices: invoices || [] 
+      propsInvoices: invoices || [] 
     },
-    revalidate: 10,
+    revalidate: 10
   }
 }
 
 export default function Home(props) {
 
-  const { invoices } = props
+  const searchInputRef = useRef()
+
+  const { propsInvoices } = props
+
+  const [invoices, setInvoices] = useState(propsInvoices)
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const router = useRouter()
 
@@ -35,29 +41,35 @@ export default function Home(props) {
     router.push('/create-invoice')
   }
 
+  const handleSearchForInvoice = async(e) => {
+    e.preventDefault()
+
+    const searchTerm = searchInputRef.current.value
+    setIsLoading(true)
+    try {
+      const response = await fetch(`/api/search/${searchTerm}`)
+      const invoices = await response.json()
+      setInvoices(invoices.invoices)
+    } catch(err) {
+      console.log(err)
+    }
+   setIsLoading(false)
+  }
+
   let content;
 
   if(invoices.length === 0) {
     content = <div className={styles.emptyPage}>
-      <h2>You haven't created any invoice yet. Click to create</h2>
+      <h2>No invoice found. Click to create invoice</h2>
       <button type='buton' className={styles.createButton} onClick={goToCreateInvoice}>Create Invoice</button>
     </div>
   } else {
     content = invoices.reverse().map(invoice => {
-      return (
-        <Link href={`/invoice/${invoice._id}`}>
-          <div className={styles.invoiceItem}>
-            <div className={styles.left}>
-              <p>{invoice._id.slice(0, 6)}</p>
-              <h3>{invoice.recipientName}</h3>
-            </div>
-            <div className={styles.right}>
-              <p>{invoice?.status}</p>
-              <h3>{invoice?.total?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</h3>
-            </div>
-          </div>
-        </Link>
-      )
+      return <HomePageInvoice
+            key={invoice._id}
+            item={invoice}
+        />
+      
     })
   }
 
@@ -67,9 +79,9 @@ export default function Home(props) {
         <div className={styles.mainWrapper}>
             <Header home createInvoice={goToCreateInvoice}/>
             <div className={styles.invoiceList}>
-              <form className={styles.searchForm} >
-                <input type='search' placeholder={`Seach for invoice using recipient's name`} />
-                <button type='submit'>Search</button>
+              <form className={styles.searchForm} onSubmit={handleSearchForInvoice}>
+                <input ref={searchInputRef} type='search' placeholder={`Seach for invoice using recipient's name`} />
+                <button type='submit'>{isLoading ? 'Searching...' : 'Search'}</button>
               </form>
              { content }
               
