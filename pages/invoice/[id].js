@@ -88,13 +88,6 @@ const InvoiceDetails = (props) => {
                                         index={index}
                                         item={item}
                                     />
-                                // <div className={styles.item}>
-                                //     <p>{index + 1}</p>
-                                //     <p className={styles.description}>{item?.description}</p>
-                                //     <p>{parseFloat(item?.rate)?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
-                                //     <p className={styles.itemQuantity}>{item?.quantity}</p>
-                                //     <p>{item?.price?.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })}</p>
-                                // </div>
                                 )
                             })}
                         </div>
