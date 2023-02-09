@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer-core";
+import { puppeteer } from "chrome-aws-lambda";
 import Chromium from "chrome-aws-lambda";
 const htmlToPdf = async (html) => {
   const browser = await puppeteer.launch(
