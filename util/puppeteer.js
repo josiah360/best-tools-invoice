@@ -3,10 +3,11 @@ import Chromium from "chrome-aws-lambda";
 const htmlToPdf = async (html) => {
   const browser = await Chromium.puppeteer.launch(
     {
-      args: Chromium.args,
+      args: [...Chromium.args, "--hide-scrollbars", "--disable-web-security"],
       executablePath: await Chromium.executablePath,
       headless: Chromium.headless,
       ignoreHTTPSErrors: true,
+      ignoreDefaultArgs: ['--disable-extensions'],
     }
 
   );

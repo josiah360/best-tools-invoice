@@ -23,7 +23,7 @@ const Header = (props) => {
                 'Content-Type': 'application/json'
             }
         });
-        const pdf = await response.arrayBuffer();
+        const pdf = await response.blob();
         const url = URL.createObjectURL(pdf);
 
         const link = document.createElement('a');
