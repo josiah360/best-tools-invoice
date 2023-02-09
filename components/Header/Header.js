@@ -23,12 +23,12 @@ const Header = (props) => {
                 'Content-Type': 'application/json'
             }
         });
-        const pdf = await response.arrayBuffer();
-        const url = URL.createObjectURL(new Blob([pdf], { type: 'application/pdf' }));
+        const pdf = await response.blob();
+        const url = URL.createObjectURL(pdf);
 
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'hello.pdf';
+        link.target = '_blank';
         document.body.appendChild(link);
         link.click();
 

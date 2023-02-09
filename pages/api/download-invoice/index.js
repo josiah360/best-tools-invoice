@@ -1,4 +1,4 @@
-import htmlToPdf from "@/util/puppeteer"
+import convertToPdf from "@/util/puppeteer";
 import html from "@/html/html";
 
 
@@ -8,16 +8,16 @@ async function addNewInvoice(req, res) {
     if(req.method === 'POST') {
         const htm = html(invoiceItem)
   
-        const pdf = await htmlToPdf(htm);
+        const pdf = await convertToPdf(htm);
 
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'inline; filename="hello.pdf"');
         res.statusCode = 200;
-        res.end(pdf);
+        return res.end(pdf);
     
     }
     
-    // return res.status(300).json({message: 'Wrong request method' })
+    return res.status(300).json({message: 'Wrong request method' })
     
 }
 
