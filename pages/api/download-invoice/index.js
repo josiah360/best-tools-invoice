@@ -1,4 +1,4 @@
-import convertToPdf from "@/util/puppeteer";
+import htmlToPdf from "@/util/puppeteer";
 import html from "@/html/html";
 
 
@@ -8,7 +8,7 @@ async function addNewInvoice(req, res) {
     if(req.method === 'POST') {
         const htm = html(invoiceItem)
   
-        const pdf = await convertToPdf(htm);
+        const pdf = await htmlToPdf(htm);
 
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'inline; filename="hello.pdf"');
