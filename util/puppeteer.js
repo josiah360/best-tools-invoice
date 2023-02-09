@@ -4,7 +4,6 @@ const htmlToPdf = async (html) => {
   const browser = await Chromium.puppeteer.launch(
     {
       args: Chromium.args,
-      defaultViewport: Chromium.defaultViewport,
       executablePath: await Chromium.executablePath,
       headless: Chromium.headless,
       ignoreHTTPSErrors: true,
