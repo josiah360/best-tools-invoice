@@ -13,7 +13,7 @@ async function addNewInvoice(req, res) {
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'inline; filename="hello.pdf"');
         res.statusCode = 200;
-        return res.end(pdf);
+        return res.send(pdf);
     
     }
     

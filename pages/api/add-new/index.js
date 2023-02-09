@@ -2,6 +2,7 @@ import mongoConnect from "@/util/database"
 import Invoice from "@/models/invoice"
 
 
+
 async function addNewInvoice(req, res) {
 
     const {recipientName, recipientAddress, createdAt, items, status, total} = req.body

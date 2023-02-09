@@ -1,12 +1,8 @@
 import Chromium from "chrome-aws-lambda";
-// import puppeteer from "puppeteer";
 
 const htmlToPdf = async (html) => {
-  const production = true
-  let browser
 
-  if(production) {
-    browser = await Chromium.puppeteer.launch(
+  let browser = await Chromium.puppeteer.launch(
       {
         args: [...Chromium.args, "--hide-scrollbars", "--disable-web-security"],
         executablePath: await Chromium.executablePath,
@@ -15,10 +11,6 @@ const htmlToPdf = async (html) => {
         ignoreDefaultArgs: ['--disable-extensions'],
       }
     );
-  } 
-  // else {
-  //   browser = await puppeteer.launch();
-  // }
 
   const page = await browser.newPage();
   await page.setContent(html);
