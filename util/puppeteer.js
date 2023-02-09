@@ -1,5 +1,5 @@
 import Chromium from "chrome-aws-lambda";
-import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer";
 
 const htmlToPdf = async (html) => {
   const production = true
@@ -15,9 +15,10 @@ const htmlToPdf = async (html) => {
         ignoreDefaultArgs: ['--disable-extensions'],
       }
     );
-  } else {
-    browser = await puppeteer.launch();
-  }
+  } 
+  // else {
+  //   browser = await puppeteer.launch();
+  // }
 
   const page = await browser.newPage();
   await page.setContent(html);
