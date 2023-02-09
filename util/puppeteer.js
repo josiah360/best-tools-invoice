@@ -1,4 +1,3 @@
-import { launch } from 'chrome-aws-lambda';
 import puppeteer from "puppeteer";
 
 const htmlToPdf = async (html) => {
